@@ -1,0 +1,51 @@
+﻿@model Faiz_Test.Models.user_login
+@{
+    ViewBag.Title = "LogIn";
+}
+@{
+    Layout = null;
+}
+<style>
+    .error{ color:crimson}
+</style>
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/css/metisMenu.min.css" rel="stylesheet" />
+<link href="~/Content/css/startmin.css" rel="stylesheet" />
+<link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><b><i>LogIn Here</i></b></h3>
+</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("LogIn", "Home", FormMethod.Post))
+                    {
+                        <fieldset>
+                            <div class="error">@TempData["Invalid"]</div>
+                            <div class="error">@TempData["Wrong"]</div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                @Html.TextBoxFor(m => m.email, new { @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                @Html.PasswordFor(m => m.password, new { @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                </label>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <button type="submit" class="btn btn-success fa fa-sign-in"></button>
+                        </fieldset>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
